@@ -32,6 +32,9 @@ def limpar_execucoes(execucoes):
     return int(execucoes)
     
 def limpar_generos(generos):
+    if not generos:
+        return []
+
     if isinstance(generos,str):
         return [generos]
 
@@ -44,8 +47,7 @@ def limpar_generos(generos):
         if isinstance(item, str):
             resultado.append(item)
         elif isinstance(item, list):
-            for i in item:
-                resultado.append(i)
+            pilha.extend(item)
 
     return sorted(resultado)
 
@@ -195,10 +197,10 @@ class Catalogo:
     def proximo(self) -> str | None:
         if not self.fila:
             return None
-        return self.fila.pop[0]
+        return self.fila.pop(0)
 
     def fila_atual(self) -> list[str]:
-        return list(self.fila_atual)
+        return list(self.fila)
 
 
 if __name__ == "__main__":
